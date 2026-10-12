@@ -1,6 +1,7 @@
-import { BRAND, GROUPS, LINENS, CATEGORIES, FACILITIES, PHOTO_BACKUPS, photoUrl, photoSrcset } from './catalog.js?v=20261012w';
-import { initCloth } from './cloth.js?v=20261012w';
-import { initMotion } from './motion.js?v=20261012w';
+import { BRAND, GROUPS, LINENS, CATEGORIES, FACILITIES, PHOTO_BACKUPS, photoUrl, photoSrcset } from './catalog.js?v=20261012l';
+import { initCloth } from './cloth.js?v=20261012l';
+import { initLinen3D } from './linen3d.js?v=20261012l';
+import { initMotion } from './motion.js?v=20261012l';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -634,9 +635,9 @@ function setupCloth() {
   const canvas = $('[data-cloth]');
   if (!canvas) return;
   const caption = $('[data-cloth-caption]');
-  initCloth(canvas, {
-    onGrab: () => caption?.classList.add('is-gone'),
-  });
+  const onGrab = () => caption?.classList.add('is-gone');
+  // Real-looking 3D linen first; the flat thread sheet is the fallback.
+  if (!initLinen3D(canvas, { onGrab })) initCloth(canvas, { onGrab });
 }
 
 function preloadPreviews() {
