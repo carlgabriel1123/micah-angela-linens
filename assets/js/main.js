@@ -1,6 +1,6 @@
-import { BRAND, GROUPS, LINENS, CATEGORIES, FACILITIES, PHOTO_BACKUPS, photoUrl, photoSrcset } from './catalog.js';
-import { initCloth } from './cloth.js';
-import { initMotion } from './motion.js';
+import { BRAND, GROUPS, LINENS, CATEGORIES, FACILITIES, PHOTO_BACKUPS, photoUrl, photoSrcset } from './catalog.js?v=20261012w';
+import { initCloth } from './cloth.js?v=20261012w';
+import { initMotion } from './motion.js?v=20261012w';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
