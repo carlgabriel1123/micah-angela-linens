@@ -80,6 +80,8 @@ Everything in the catalog comes from `assets/js/catalog.js`:
 
 Placeholder photos come from Unsplash under the free Unsplash License, hotlinked from images.unsplash.com: Adhy Savala, Adam Winger, Karaz Pro, Hush Naidoo Jade Photography, Martha Dominguez de Gouveia, Alexander Grey, Nappy, Annie Spratt, Jordan Bigelow, Arseny Togulev, Priscilla Du Preez, Masaaki Komori, Andrew Neel, Slaapwijsheid.nl, engin akyurt, Suzanne Rushton, Ryan Waldman, Hannah Busing, Robert Mathews, fabio guntur, Camille Brodard, Point3D Commercial Imaging Ltd., Saile Ilyas, Lotus Design N Print, Christian Lambert, Ginwestern Photography, benjamin lehman, Matthew, Ethan Bodnar, Michael D Beckwith and Mel Poole. Replace them with your own product photos before launch.
 
-## Putting it online
+## Live site
 
-It's a static site, so Vercel, Netlify, Cloudflare Pages or GitHub Pages can host it as is. Wix doesn't host hand-written HTML sites; to use Wix, rebuild this layout in the Wix editor with this page as the design reference.
+Hosted on GitHub Pages from the `main` branch: https://carlgabriel1123.github.io/micah-angela-linens/
+
+To update it, commit and push to `main`; Pages rebuilds in about a minute. If you change `src/input.css`, run `npm run build` first so `assets/css/styles.css` is up to date.
