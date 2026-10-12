@@ -67,8 +67,7 @@ Everything in the catalog comes from `assets/js/catalog.js`:
 | File | What it does |
 | --- | --- |
 | `index.html` | The page: header, hero, ribbon, who we supply, linen catalog, hospital bed, beyond linens, how it works, about, inquiry form, footer |
-| `assets/js/cloth.js` | The hero linen: a hanging sheet of woven threads with real physics. It drops onto its rod, sways in a breeze, and can be pushed or grabbed and pulled. Holds still for visitors who turn off motion |
-| `assets/js/motion.js` | Smooth scrolling (Lenis) and GSAP scroll motion: headline reveals, the speeding ribbon, the pinned hospital bed, the cursor photo on Beyond linens, magnetic buttons |
+| `assets/js/motion.js` | Smooth scrolling (Lenis) and GSAP scroll motion: the hero linen photo's slow zoom and drift, headline reveals, the speeding ribbon, the pinned hospital bed, the cursor photo on Beyond linens, magnetic buttons |
 | `assets/js/main.js` | Catalog rendering, animated filter tabs, detail panels, inquiry list (saved in the visitor's browser), form checks |
 | `assets/js/catalog.js` | All catalog content |
 | `assets/vendor/` | GSAP 3.13 (ScrollTrigger, SplitText, Flip) and Lenis 1.3.4, copied from npm so the site works offline |

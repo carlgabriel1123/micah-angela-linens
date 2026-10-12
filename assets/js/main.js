@@ -1,7 +1,5 @@
-import { BRAND, GROUPS, LINENS, CATEGORIES, FACILITIES, PHOTO_BACKUPS, photoUrl, photoSrcset } from './catalog.js?v=20261012l';
-import { initCloth } from './cloth.js?v=20261012l';
-import { initLinen3D } from './linen3d.js?v=20261012l';
-import { initMotion } from './motion.js?v=20261012l';
+import { BRAND, GROUPS, LINENS, CATEGORIES, FACILITIES, PHOTO_BACKUPS, photoUrl, photoSrcset } from './catalog.js?v=20261012h';
+import { initMotion } from './motion.js?v=20261012h';
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
@@ -631,15 +629,6 @@ document.addEventListener('click', async (e) => {
 
 /* ---------- Boot ---------- */
 
-function setupCloth() {
-  const canvas = $('[data-cloth]');
-  if (!canvas) return;
-  const caption = $('[data-cloth-caption]');
-  const onGrab = () => caption?.classList.add('is-gone');
-  // Real-looking 3D linen first; the flat thread sheet is the fallback.
-  if (!initLinen3D(canvas, { onGrab })) initCloth(canvas, { onGrab });
-}
-
 function preloadPreviews() {
   const urls = $$('[data-preview]').map((b) => b.dataset.preview).filter(Boolean);
   const go = () => {
@@ -663,7 +652,6 @@ function boot() {
   renderInquiry();
   setupForm();
   setupDiagram();
-  setupCloth();
 
   motion = initMotion({
     reduce,

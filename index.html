@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Geist+Mono:wght@400..600&family=Geist:wght@400..600&display=swap">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261012l">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261012h">
   <script>
     document.documentElement.classList.replace('no-js', 'js');
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('no-motion');
@@ -24,7 +24,7 @@
   <script src="assets/vendor/SplitText.min.js" defer></script>
   <script src="assets/vendor/Flip.min.js" defer></script>
   <script src="assets/vendor/lenis.min.js" defer></script>
-  <script type="module" src="assets/js/main.js?v=20261012l"></script>
+  <script type="module" src="assets/js/main.js?v=20261012h"></script>
 </head>
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
@@ -78,7 +78,13 @@
 
   <main id="main">
     <!-- Hero -->
-    <section id="top" class="hero wrap" aria-labelledby="hero-title">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" data-hero-media aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1639690222869-1e608aa51f82?auto=format&amp;fit=crop&amp;w=2000&amp;q=75"
+             srcset="https://images.unsplash.com/photo-1639690222869-1e608aa51f82?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w, https://images.unsplash.com/photo-1639690222869-1e608aa51f82?auto=format&amp;fit=crop&amp;w=1500&amp;q=75 1500w, https://images.unsplash.com/photo-1639690222869-1e608aa51f82?auto=format&amp;fit=crop&amp;w=2400&amp;q=75 2400w"
+             sizes="100vw" alt="" fetchpriority="high" decoding="async" data-hero-img>
+      </div>
+      <div class="wrap hero-inner">
       <div class="hero-copy">
         <p class="label" data-hero-fade>Linen &amp; hospitality supply · Philippines</p>
         <h1 id="hero-title" class="hero-title" data-hero-title>Linens for places that never close.</h1>
@@ -88,9 +94,6 @@
           <a class="btn btn-ghost btn-lg" href="#linens">See the linens</a>
         </div>
       </div>
-      <div class="cloth-panel" data-cloth-panel>
-        <canvas class="cloth-canvas" data-cloth aria-hidden="true"></canvas>
-        <p class="cloth-caption" data-cloth-caption><svg aria-hidden="true"><use href="#i-hand"/></svg><span class="hint-fine">Grab and drag the linen</span><span class="hint-touch">Swipe across the linen</span></p>
       </div>
     </section>
 

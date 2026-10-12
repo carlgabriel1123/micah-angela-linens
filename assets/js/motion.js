@@ -80,8 +80,21 @@ export function initMotion({ reduce, onBedStep, onScroll }) {
   function heroIntro() {
     const title = $('[data-hero-title]');
     const fades = $$('[data-hero-fade]');
-    const panel = $('[data-cloth-panel]');
+    const hero = $('.hero');
+    const media = $('[data-hero-media]');
+    const img = $('[data-hero-img]');
     const header = $('[data-header]');
+
+    // The linen photo settles in right away, then drifts slowly like fabric
+    // in a breeze, and moves a little slower than the page on scroll.
+    if (img) {
+      gsap.to(img, { scale: 1.06, duration: 2.8, ease: 'expo.out' });
+      gsap.to(img, { xPercent: -2.5, yPercent: -1.5, rotation: 0.4, duration: 14, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2.2 });
+    }
+    if (hero && media) {
+      gsap.to(media, { yPercent: 16, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.to('.hero-copy', { yPercent: -12, autoAlpha: 0.2, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+    }
     const run = () => {
       gsap.from(header, { yPercent: -100, duration: 0.9, ease: 'expo.out' });
       if (title) {
@@ -100,11 +113,6 @@ export function initMotion({ reduce, onBedStep, onScroll }) {
         }
       }
       gsap.from(fades, { y: 26, autoAlpha: 0, duration: 1, ease: 'expo.out', stagger: 0.09, delay: 0.35 });
-      if (panel) {
-        gsap.fromTo(panel,
-          { autoAlpha: 1, clipPath: 'inset(9% 9% 9% 9% round 28px)' },
-          { clipPath: 'inset(0% 0% 0% 0% round 28px)', duration: 1.5, ease: 'expo.out', delay: 0.15, clearProps: 'clipPath' });
-      }
     };
     const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
     Promise.race([fontsReady, new Promise((r) => setTimeout(r, 1200))]).then(run);

@@ -243,22 +243,31 @@
   .count.bump { animation: bump 0.45s var(--ease-expo); }
 
   /* Hero */
+  /* Full-width linen photo with the copy on top, left aligned. */
   .hero {
-    display: grid;
-    gap: 2.5rem;
-    padding-top: 2.5rem;
-    padding-bottom: 3.5rem;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: clamp(560px, calc(100svh - 72px), 920px);
+    overflow: hidden;
+    background: var(--color-mist);
   }
-  @media (min-width: 1024px) {
-    .hero {
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-      align-items: center;
-      gap: 4rem;
-      min-height: calc(100svh - 72px);
-      padding-top: 1.5rem;
-      padding-bottom: 3rem;
-    }
+  .hero-media { position: absolute; inset: 0; z-index: -1; }
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 60% 50%;
+    transform-origin: 60% 45%;
   }
+  .hero-media::after { content: ""; position: absolute; inset: 0; background: rgb(255 255 255 / 0.22); }
+  @media (max-width: 767px) {
+    .hero-media img { object-position: 18% 50%; transform-origin: 18% 45%; }
+    .hero-media::after { background: rgb(255 255 255 / 0.14); }
+  }
+  .hero-inner { padding-block: 4.5rem; }
+  .hero-copy { max-width: 42rem; }
   .hero-title {
     margin-top: 1.4rem;
     font-size: clamp(3rem, 1.7rem + 5.2vw, 6.4rem);
@@ -267,40 +276,11 @@
     letter-spacing: -0.03em;
     line-height: 0.95;
   }
-  .hero-sub { margin-top: 1.6rem; max-width: 34rem; font-size: 1.12rem; color: var(--color-slate); }
+  .hero-sub { margin-top: 1.6rem; max-width: 34rem; font-size: 1.12rem; color: #3E4757; }
   .hero-copy > div { margin-top: 2.25rem; }
+  .hero .btn-ghost { background: rgb(255 255 255 / 0.7); }
+  .hero .btn-ghost:hover { background: #fff; }
 
-  .cloth-panel {
-    position: relative;
-    height: 26rem;
-    border-radius: 1.75rem;
-    overflow: hidden;
-    background: var(--color-cobalt);
-  }
-  @media (min-width: 640px) { .cloth-panel { height: 32rem; } }
-  @media (min-width: 1024px) { .cloth-panel { height: min(40rem, calc(100svh - 72px - 4.5rem)); } }
-  .cloth-canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: pan-y; cursor: grab; }
-  .cloth-canvas.is-grabbing { cursor: grabbing; }
-  .cloth-caption {
-    position: absolute;
-    left: 1.1rem;
-    bottom: 1.1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0.85rem 0.5rem 0.65rem;
-    border-radius: 999px;
-    background: #fff;
-    color: var(--color-ink);
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    pointer-events: none;
-    transition: opacity 0.5s, transform 0.5s var(--ease-expo);
-  }
-  .cloth-caption svg { width: 1.05rem; height: 1.05rem; }
-  .cloth-caption.is-gone { opacity: 0; transform: translateY(6px); }
   .hint-touch { display: none; }
   @media (pointer: coarse) {
     .hint-fine { display: none; }
@@ -912,8 +892,8 @@
 
   /* Before motion runs, keep the hero hidden so it can animate in. */
   .js:not(.no-motion) [data-hero-fade],
-  .js:not(.no-motion) [data-hero-title],
-  .js:not(.no-motion) [data-cloth-panel] { visibility: hidden; }
+  .js:not(.no-motion) [data-hero-title] { visibility: hidden; }
+  .js:not(.no-motion) [data-hero-img] { transform: scale(1.12); }
 }
 
 @keyframes bump {
