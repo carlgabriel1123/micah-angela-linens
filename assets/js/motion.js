@@ -363,7 +363,7 @@ export function initMotion({ reduce, onBedStep, onScroll }) {
     scrollTo(target) {
       const el = typeof target === 'string' ? $(target) : target;
       if (!el) return;
-      if (lenis) lenis.scrollTo(el, { offset: 0, duration: 1.3 });
+      if (lenis) lenis.scrollTo(el, { offset: -14, duration: 1.3 });
       else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     },
     scrollTop() {

@@ -142,15 +142,15 @@ function renderInquiry() {
   if (list) {
     list.innerHTML = n
       ? `<ul class="grid gap-2">${inquiry.items.map((i) => `
-          <li class="flex items-center justify-between gap-3 rounded-2xl bg-mist px-4 py-3">
+          <li class="flex items-center justify-between gap-3 rounded-2xl bg-raise px-4 py-3">
             <div class="min-w-0">
               <p class="truncate font-display text-[1.05rem] font-semibold tracking-tight">${esc(i.name)}</p>
               <p class="font-mono text-[0.72rem] uppercase tracking-[0.08em] text-slate">${esc(i.kind)}</p>
             </div>
             <button type="button" class="list-btn shrink-0" data-remove="${esc(i.id)}" aria-label="Remove ${esc(i.name)}">${icon('i-close')}</button>
           </li>`).join('')}</ul>
-        <button type="button" class="mt-4 text-[0.9rem] font-medium text-cobalt underline-offset-4 hover:underline" data-clear>Clear the list</button>`
-      : `<div class="grid place-items-center gap-3 rounded-2xl bg-mist px-6 py-14 text-center">
+        <button type="button" class="mt-4 text-[0.9rem] font-medium text-sky underline-offset-4 hover:underline" data-clear>Clear the list</button>`
+      : `<div class="grid place-items-center gap-3 rounded-2xl bg-raise px-6 py-14 text-center">
           ${icon('i-list', 'h-9 w-9 text-slate')}
           <p class="max-w-[17rem] text-[0.95rem] text-slate">Your list is empty. Tap + on any linen, or "Ask about this" on a category.</p>
           <a class="btn btn-ghost mt-1" href="#linens">Browse linens</a>
@@ -288,11 +288,11 @@ function renderLinens() {
       <article class="card" data-group="${p.group}" data-flip-id="${p.id}">
         <div class="card-media">
           ${img(p.photo, p.name)}
-          <span class="chip${hospital ? ' chip-hospital' : ''}">${esc(groupById[p.group].label)}</span>
           <button type="button" class="card-hit" data-quick="${p.id}" aria-label="View details: ${esc(p.name)}"></button>
           <button type="button" class="add-fab" data-add="${p.id}" aria-pressed="${added}" aria-label="${added ? 'Remove' : 'Add'} ${esc(p.name)} ${added ? 'from' : 'to'} your inquiry list">${icon(added ? 'i-check' : 'i-plus')}</button>
         </div>
         <div class="card-body">
+          <p class="card-group${hospital ? ' card-group-hospital' : ''}">${esc(groupById[p.group].label)}</p>
           <h3 class="card-title"><button type="button" data-quick="${p.id}">${esc(p.name)}</button></h3>
           <p class="card-spec">${esc(p.spec)}</p>
         </div>
@@ -389,7 +389,7 @@ function openQuick(id, opener) {
   const added = inquiry.has(p.id);
   const hospital = p.group === 'hospital';
   $('[data-quick-body]', dlg).innerHTML = `
-    <div class="relative min-h-[17rem] bg-mist md:min-h-[34rem]">
+    <div class="relative min-h-[17rem] bg-raise md:min-h-[34rem]">
       ${img(p.photo, p.name, { sizes: '(min-width: 768px) 30rem, 100vw', w: 1000, eager: true, cls: 'absolute inset-0 h-full w-full object-cover' })}
     </div>
     <div class="flex flex-col p-6 sm:p-10">
@@ -422,16 +422,16 @@ function openCategory(id, opener) {
   const key = `cat:${c.id}`;
   const added = inquiry.has(key);
   $('[data-category-body]', dlg).innerHTML = `
-    <div class="relative h-56 shrink-0 bg-mist sm:h-64">
+    <div class="relative h-56 shrink-0 bg-raise sm:h-64">
       ${img(c.photo, c.name, { sizes: '28rem', w: 900, eager: true, cls: 'absolute inset-0 h-full w-full object-cover' })}
-      <button type="button" class="list-btn absolute top-3 right-3 bg-white" data-close aria-label="Close category">${icon('i-close')}</button>
+      <button type="button" class="list-btn absolute top-3 right-3 bg-panel" data-close aria-label="Close category">${icon('i-close')}</button>
     </div>
     <div class="flex-1 overflow-y-auto px-6 py-7">
       <p class="label">Beyond linens</p>
       <h2 id="cat-title" class="mt-3 font-display text-[2rem] font-bold leading-none tracking-tight">${esc(c.name)}</h2>
       <p class="mt-3 text-slate">${esc(c.blurb)}</p>
       <ul class="mt-6 border-t border-line">
-        ${c.items.map((item) => `<li class="flex items-center gap-3 border-b border-line py-3">${icon('i-check', 'h-4 w-4 shrink-0 text-cobalt')}${esc(item)}</li>`).join('')}
+        ${c.items.map((item) => `<li class="flex items-center gap-3 border-b border-line py-3">${icon('i-check', 'h-4 w-4 shrink-0 text-sky')}${esc(item)}</li>`).join('')}
       </ul>
       <p class="mt-5 text-[0.95rem] text-slate">This is the short version. Ask for the full list and we'll send it with photos.</p>
     </div>
